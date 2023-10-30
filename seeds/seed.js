@@ -1,0 +1,1 @@
+const userData = require('./userData.json');
