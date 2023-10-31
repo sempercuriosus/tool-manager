@@ -25,7 +25,9 @@ ToolsCheckedOut.init(
                 model: 'users'
                 , key: 'id'
             }
-        },
+        }
+    },
+    {
         sequelize,
         timestamps: false,
         freezeTableName: true,

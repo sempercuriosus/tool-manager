@@ -1,8 +1,7 @@
-
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Tools extends Model { }
+class Tools extends Model { };
 
 Tools.init(
     {
@@ -18,19 +17,22 @@ Tools.init(
         },
         date_added: {
             type: DataTypes.DATE,
-            defaultValue: Sequelize.NOW
+            defaultValue: DataTypes.NOW
         },
         is_available:
         {
             type: DataTypes.BOOLEAN,
             defaultValue: true
-        },
+        }
+    },
+    {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'tools',
+        modelName: 'tools'
     }
+
 );
 
 module.exports = Tools;
