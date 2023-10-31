@@ -1,4 +1,6 @@
-[
+const { Users } = require('../models')
+
+const userList = [
     {
       "name": "Tyler",
       "email": "tyrush1911@outlook.com",
