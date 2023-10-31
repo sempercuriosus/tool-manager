@@ -76,3 +76,7 @@ const toolList = [ {
     "date_added": "12/8/2018",
     "is_available": false
 } ];
+
+const seedTools = () => Tools.bulkCreate(toolList);
+
+module.exports = seedTools;
