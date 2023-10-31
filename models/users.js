@@ -20,14 +20,17 @@ Users.init(
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
+            defaultValue: ''
         },
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
+            defaultValue: ''
         },
         address: {
             type: DataTypes.STRING,
             allowNull: false,
+            defaultValue: ''
         },
         email: {
             type: DataTypes.STRING,
