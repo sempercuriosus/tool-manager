@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { Users } = require('../models');
 
 const userList = [
@@ -29,7 +30,14 @@ const userList = [
 
 
 // create seed function
-const seedUsers = () => Users.bulkCreate(userList);
+const seedUsers = async () => {
+  for (const seed of userList) {
+    const hashedPassword = await bcrypt.hash(seed.password, 10);
+    seed.password = hashedPassword;
+  }
+
+  return Users.bulkCreate(userList);
+};
 
 // export seed data
 module.exports = seedUsers;
