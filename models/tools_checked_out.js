@@ -26,6 +26,12 @@ ToolsCheckedOut.init(
                 , key: 'id'
             }
         }
+        , checkout_date: {
+            type: DataTypes.DATE
+        }
+        , reutrn_date: {
+            type: DataTypes.DATE
+        }
     },
     {
         sequelize,
