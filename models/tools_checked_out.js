@@ -25,7 +25,15 @@ ToolsCheckedOut.init(
                 model: 'users'
                 , key: 'id'
             }
-        },
+        }
+        , checkout_date: {
+            type: DataTypes.DATE
+        }
+        , reutrn_date: {
+            type: DataTypes.DATE
+        }
+    },
+    {
         sequelize,
         timestamps: false,
         freezeTableName: true,
