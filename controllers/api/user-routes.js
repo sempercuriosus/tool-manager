@@ -37,7 +37,6 @@ const { Users } = require('../../models/users');
 */
 
 
-
 // #endregion Main Route From API
 
 
@@ -47,7 +46,16 @@ const { Users } = require('../../models/users');
  * Logs the user into the app
  *
 */
-router.post('/login', async (req, res) => { });
+router.post('/login', async (req, res) => {
+  /** 
+    request body
+    {
+      email: "", 
+      password: ""
+    }
+  */
+
+});
 
 // #endregion Login
 
@@ -57,7 +65,10 @@ router.post('/login', async (req, res) => { });
  * Logs the user out and needs a redirect to login  html
  *
 */
-router.post('/', async (req, res) => { });
+router.post('/', async (req, res) => {
+
+
+});
 
 // #endregion Logout
 
