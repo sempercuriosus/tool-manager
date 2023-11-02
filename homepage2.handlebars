@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Handlebars Example</title>
+</head>
+<body>
+    <div id="content">
+        <script id="entry-template" type="text/x-handlebars-template">
+            <h1>{{Users}}</h1>
+            <p>{{name}},{{email}}</p>
+        </script>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script>
+        // Data to be inserted into the template
+        var data = {
+            title: "Hello, World!",
+            description: "This is a basic Handlebars example."
+        };
+
+        // Get the template from the HTML
+        var source = document.getElementById("entry-template").innerHTML;
+
+        // Compile the template
+        var template = Handlebars.compile(source);
+
+        // Insert the data into the template
+        var html = template(data);
+
+        // Insert the HTML into the page
+        document.getElementById("content").innerHTML = html;
+    </script>
+</body>
+</html>
+<!--In this example:
+
+We define an HTML template using the <script> tag with the type "text/x-handlebars-template."
+
+Inside the template, we use Handlebars expressions like {{title}} and {{description}} to indicate where dynamic data should be inserted.
+
+We include the Handlebars library via a CDN link.
+
+We define a JavaScript object called data that contains the data to be inserted into the template.
+
+We compile the template using Handlebars.compile().
+
+We use the compiled template to generate HTML by passing the data object to it.
+
+Finally, we insert the generated HTML into the page.
+
+This is a basic example, and in a real application, you'd typically load data dynamically from a server and use Handlebars to render it in the template. Handlebars allows for more advanced features like loops, conditionals, and custom helpers to create dynamic web -->
