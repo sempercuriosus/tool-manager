@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3001;
 //     .then(() => {
 // console.info('Database connection has been established successfully.');
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {
         console.info(`App listening on port ${PORT}!`);
     });
