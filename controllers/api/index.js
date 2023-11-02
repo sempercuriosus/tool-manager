@@ -1,8 +1,10 @@
+const router = require('express').Router();
 
-/*
-  * API Routes Controller
+// Routes
+const ping = require('./pong');
+const userRoutes = require('./user-routes');
 
-  * 
-  * ALL routes for any API should go through this
-  * 
-*/
+router.use('/ping', ping);
+// router.use('/users', userRoutes);
+
+module.exports = router;
