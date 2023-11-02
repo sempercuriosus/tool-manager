@@ -1,7 +1,7 @@
+const router = require('express').Router();
 
-/*
-  * API Routes Controller
-  * 
-  * ALL routes for any API should go through this
-  * 
-*/
+const userRoutes = require('./user-routes');
+
+router.use('/users', userRoutes);
+
+module.exports = router;
