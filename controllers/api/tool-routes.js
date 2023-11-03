@@ -36,6 +36,69 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+/*
+  * get the json file from the front end
+  * accept the json
+  * check there is json
+  * then insert the new record with the following information
+*/
+router.post('/add-rental', async (req, res) => {
+    // console.log('post user tool rental to db');
+    // res.status(200).json({ 'response': 'posted the user tool rental to db' });
+
+    /* request body
+      * user_id  -> INT
+      * tool_ids  -> Array of INT
+      * start_date -> string
+      * end_date -> string
+
+        {
+            "user_id": 0
+            "tool_ids": []
+            "start_date": ""
+            "end_date": ""
+        }
+    */
+
+
+    // return response
+    if (!req.body.user_id ||
+        !req.body.tool_ids ||
+        !req.body.start_date ||
+        !req.body.end_date) {
+
+        return res.status(400).json({ 'response': 'The request made is missing data needed in order to complete the rental.' });
+    }
+
+    try {
+        // if the user is logged in, making the reqeust assuming they are valid then. 
+        // so long as there is an ID I do not care what it is. 
+        const userId = req.body.user_id;
+        const tools = req.body.tool_ids;
+        const startDate = req.body.start_date;
+        const endDate = req.body.end_date;
+
+        console.log(req.body.user_id,
+            req.body.tool_ids,
+            req.body.start_date,
+            req.body.end_date);
+
+        const toolsRented = await Promise.all(tools.map(toolId => ToolsCheckedOut.create({
+            user_id: userId.toString(),
+            tool_id: toolId.toString(),
+            checkout_date: startDate.toString(),
+            reutrn_date: endDate.toString()
+        })));
+
+        return res.status(200).json({ 'response': 'The rental has been confirmed!' });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ 'response': 'There was an issue adding the rental.' });
+    }
+});
+
 module.exports = router;
 
 
