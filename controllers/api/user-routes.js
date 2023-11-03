@@ -24,20 +24,23 @@
   * Imports
 */
 const router = require('express').Router();
-const { Users } = require('../../models/users');
+const { Users } = require('../../models');
 
+// works - because we are accessing the route directly, and the object is destructured when it is exported.
+// or at least, when we are accessing it this way the model is being exported as an object available to use.
+// const Users = require('../../models/users.js');
+// does not work - because we are accessing the file directly, and nesting the object inside of an object when we use this syntax {{Users}} is esentially what we are accessing. 
+// const { Users } = require('/Users/keys/projects/bootcamp/project2/models/users.js');
+// const { Users } = require('../../models/users.js');
 
+console.log('alskdjfjasdkfa', __dirname);
 
+console.log(Users);
 
-
-// #region Main Route From API
-/*
- * Main user page coming from the API route controller
- *
-*/
-
-
-// #endregion Main Route From API
+router.use('/ping', (req, res) => {
+  console.log('The user has user-pinged!');
+  res.send('Therefore, I must user-pong...');
+});
 
 
 
@@ -54,7 +57,24 @@ router.post('/login', async (req, res) => {
       password: ""
     }
   */
+  try {
+    console.log('email: ' + req.body.email, 'password: ' + req.body.password);
+    // res.send();
 
+    const dbUserData = await Users.findOne({
+      where: {
+        email: req.body.email
+      },
+    });
+
+    console.log(dbUserData);
+
+    res.end();
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // #endregion Login
@@ -65,10 +85,10 @@ router.post('/login', async (req, res) => {
  * Logs the user out and needs a redirect to login  html
  *
 */
-router.post('/', async (req, res) => {
+// router.post('/logout', async (req, res) => {
 
 
-});
+// });
 
 // #endregion Logout
 
@@ -82,9 +102,12 @@ router.post('/', async (req, res) => {
  *  only then will the update happen
 */
 
-router.put('/:id', async (req, res) => {
-  const userId = req.params.id;
+// router.put('/:id', async (req, res) => {
+//   const userId = req.params.id;
 
-});
+// });
 
 // #endregion Updates
+
+// export
+module.exports = router;

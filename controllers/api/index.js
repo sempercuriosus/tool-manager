@@ -8,8 +8,10 @@ const url = 'https://connect.squareup.com/v2/payments'
 const ping = require('./pong');
 const userRoutes = require('./user-routes');
 
+// pong for testing 
 router.use('/ping', ping);
-// router.use('/users', userRoutes);
+// user routes
+router.use('/users', userRoutes);
 
 module.exports = router;
 
