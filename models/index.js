@@ -5,4 +5,27 @@ const ToolsCheckedOut = require('./tools_checked_out');
 
 console.log('Creating DB Models');
 
+// Model Relationships
+Users.hasMany(ToolsCheckedOut, {
+    foreignKey: 'user_id',
+});
+
+Tools.hasMany(ToolsCheckedOut, {
+    foreignKey: 'tool_id',
+});
+
+
+// Model Associations
+
+Users.belongsToMany(Tools, {
+    through: ToolsCheckedOut,
+    foreignKey: 'user_id',
+});
+
+Tools.belongsToMany(Users, {
+    through: ToolsCheckedOut,
+    foreignKey: 'tool_id',
+});
+
+
 module.exports = { Tools, Users, ToolsCheckedOut };
