@@ -33,9 +33,6 @@ const { Users } = require('../../models');
 // const { Users } = require('/Users/keys/projects/bootcamp/project2/models/users.js');
 // const { Users } = require('../../models/users.js');
 
-console.log('alskdjfjasdkfa', __dirname);
-
-console.log(Users);
 
 router.use('/ping', (req, res) => {
   console.log('The user has user-pinged!');
@@ -53,13 +50,11 @@ router.post('/login', async (req, res) => {
   /** 
     request body
     {
-      email: "", 
-      password: ""
+      email: ""
     }
   */
   try {
-    console.log('email: ' + req.body.email, 'password: ' + req.body.password);
-    // res.send();
+    console.log('EMAIL EMAIL EMAIL: ' + req.body.email);
 
     const dbUserData = await Users.findOne({
       where: {
@@ -67,9 +62,9 @@ router.post('/login', async (req, res) => {
       },
     });
 
-    console.log(dbUserData);
 
-    res.end();
+
+    res.send('USER FOUND: ' + dbUserData.id + ' ' + dbUserData.first_name);
 
   } catch (err) {
     console.log(err);
@@ -93,21 +88,6 @@ router.post('/login', async (req, res) => {
 // #endregion Logout
 
 
-// #region Updates
-/*
- * User information updates
- *  Takes in a JSON body containing the entire user object
- *  using the ID
- *  SANITIZES THE INPUT - ensuring it is a string value
- *  only then will the update happen
-*/
-
-// router.put('/:id', async (req, res) => {
-//   const userId = req.params.id;
-
-// });
-
-// #endregion Updates
 
 // export
 module.exports = router;
