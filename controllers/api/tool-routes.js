@@ -29,7 +29,10 @@ router.get('/', async (req, res) => {
         // });
 
         // res.send('tools', { tools: availableTools });
+
+        // returning all tools
         res.json(allTools);
+
     } catch (error) {
         console.error('Error fetching or rendering tools:', error);
         res.status(500).json({ 'Internal Server Error': 'There was an error in processing the current request.' });
