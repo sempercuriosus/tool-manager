@@ -50,7 +50,8 @@ router.post('/login', async (req, res) => {
   /** 
     request body
     {
-      email: ""
+      "email": "",
+      "password":""
     }
   */
   try {
@@ -62,9 +63,22 @@ router.post('/login', async (req, res) => {
       },
     });
 
+    if (!dbUserData) {
+      return res.status(404).json({ 'result': 'The username or password was not correct.' });
+    }
 
+    const validatedPassword = await dbUserData.checkPassword(req.body.password);
 
-    res.send('USER FOUND: ' + dbUserData.id + ' ' + dbUserData.first_name);
+    if (!validatedPassword) {
+      return res.status(404).json({ 'result': 'The username or password was not correct.' });
+    }
+
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.logged_in = true;
+
+      return res.send('USER FOUND: ' + dbUserData.id + ' ' + dbUserData.first_name + ' ' + req.session.id);
+    });
 
   } catch (err) {
     console.log(err);
@@ -80,8 +94,21 @@ router.post('/login', async (req, res) => {
  * Logs the user out and needs a redirect to login  html
  *
 */
-// router.post('/logout', async (req, res) => {
-
+router.post('/logout', (req, res) => {
+  try {
+    if (req.session.logged_in) {
+      console.log('Session', req.session.id, 'closing...');
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  }
+  catch (error) {
+    res.status(500).json({ 'response': 'There was an error in logging out.' });
+  }
+});
 
 // });
 
