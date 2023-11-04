@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Get to Work!</title>
-</head>
-<body>
-    
-</body>
-</html>
+ const express = require('express')
+const square = require('square')
+try {
+  const response = await client.checkoutApi.createPaymentLink({
+    idempotencyKey: '{{UNIQUE_KEY}}',
+    quickPay: {
+      name: '{{ITEM_NAME}}',
+      priceMoney: {
+        amount: {{PRICE_AMOUNT}},
+        currency: '{{CURRENCY}}'
+      },
+      locationId: '{{LOCATION_ID}}'
+    });
+  console.log(response.result);
+} catch(error) {
+  console.log(error);
+};
