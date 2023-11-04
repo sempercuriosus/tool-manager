@@ -29,7 +29,13 @@ const userList = [
   {
     "first_name": "Sebastian",
     "last_name": "Mena",
-    "email": "alain.mena@wimzel.com",
+    "email": "sebastial@email.com",
+    "password": "password12345"
+  },
+  {
+    "first_name": "Kristina",
+    "last_name": "Glinoga",
+    "email": "kristina@email.com",
     "password": "password12345"
   },
 
