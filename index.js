@@ -8,15 +8,23 @@ const Models = require('./models/index');
 // sessions
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+// View Engine
+const exphbs = require('express-handlebars');
+//Helpers
+const helpers = require('./utils/helpers');
 
+// Express Instance
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// cookie timeout @ 2 hours
+// Handelbars
+const hbs = exphbs.create();
+
+// Cookie Timeout @2 hours
 // 1000ms (required by session) * 12 hours * 60 minutes * 60 seconds
 const cookieMaxAge = (1000 * 12 * 60 * 60);
 
-// session
+// Session Delaration
 const sess = {
     secret: 'Super duper secret secret',
     cookie: {
@@ -31,15 +39,22 @@ const sess = {
     })
 };
 
+// Setting the session
 app.use(session(sess));
 
+// Setting the view engine
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname, 'public')));
 
-
+// Routes
 app.use(routes);
 
+// Sequelize 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {
         console.info(`App listening on port ${PORT}! You are running.`);
