@@ -4,28 +4,35 @@ const { Users } = require('../models');
 const userList = [
   {
     "first_name": "Tyler",
-    "last_name": "",
+    "last_name": "Stubbs",
     "email": "tyrush1911@outlook.com",
     "password": "password12345"
   },
   {
     "first_name": "Eric",
-    "last_name": "",
+    "last_name": "Hulse",
     "email": "hulse@hey.com",
     "password": "password12345"
   },
   {
     "first_name": "Oleksandr",
-    "last_name": "",
+    "last_name": "Buhaiov",
     "email": "alexbugayov30@gmail.com",
     "password": "password12345"
   },
   {
     "first_name": "Modeste",
-    "last_name": "",
+    "last_name": "Valens",
     "email": "movank@gmail.com",
     "password": "password12345"
   },
+  {
+    "first_name": "Sebastian",
+    "last_name": "Mena",
+    "email": "alain.mena@wimzel.com",
+    "password": "password12345"
+  },
+
 ];
 
 
