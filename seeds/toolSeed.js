@@ -1,4 +1,8 @@
-
+/*
+  * Create the Tool Model User Seed Data
+  * 
+  * 
+*/
 const { Tools } = require('../models');
 
 const toolList = [ {

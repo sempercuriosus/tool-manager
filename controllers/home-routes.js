@@ -10,10 +10,17 @@
   *     The user will need to be sent to the login page
 */
 
+// Router Instance
 const router = require('express').Router();
+// Model
 const { User } = require('../models');
+// Auth
 const withAuth = require('../utils/auth');
 
+/*
+  * Main Route
+  * 
+*/
 router.get('/', withAuth, async (req, res) => {
     // Render the profile partial 
     try {
@@ -24,9 +31,12 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
+/*
+  * Login check & redirect
+  *
+*/
 router.get('/login', (req, res) => {
     // If a session exists, the user IS logged in and the request can be redirected to the to the homepage
-    console.log('HOME ROUTES LOGIN ---------------> is logged in.');
 
     // DO redirect to the root route to the homepage
     if (req.session.logged_in) {
@@ -37,4 +47,5 @@ router.get('/login', (req, res) => {
     res.render('profile', { pageTitle: 'User Profile', userData: 'USER', layout: 'homepage' });
 });
 
+// Export
 module.exports = router;

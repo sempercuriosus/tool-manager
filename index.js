@@ -1,3 +1,8 @@
+/*
+  * Application Main file to start and run the application
+  * 
+  * This should have been called Server.js, probably
+*/
 // express 
 const express = require('express');
 // controllers
