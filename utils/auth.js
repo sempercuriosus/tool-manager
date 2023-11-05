@@ -1,15 +1,13 @@
-
 /*
-  * Directing users who are not currently logged in to the login page
-  * 
-  * 
+  * Extending the Request to see if the user is logged in
 */
 const withAuth = (req, res, next) => {
+    // the user is NOT logged in ---> redirect to login page
     if (!req.session.logged_in) {
-        // if the user is not logged in, they need to be sent to do so
         res.redirect('/login');
-    } else {
-        // if they are then passing this request along to the next matching route.
+    }
+    // the user IS logged in ---> passing this request along to the next matching route
+    else {
         next();
     }
 };
