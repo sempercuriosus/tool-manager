@@ -31,8 +31,10 @@ const hbs = exphbs.create();
 const cookieMaxAge = (1000 * 12 * 60 * 60);
 
 // Session Delaration
+const salt = process.env.SALT;
+
 const sess = {
-    secret: 'Super duper secret secret',
+    secret: salt,
     cookie: {
         // do NOT directly set the expires property. 
         // https://github.com/expressjs/session#cookieexpires
