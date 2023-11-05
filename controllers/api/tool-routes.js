@@ -65,16 +65,29 @@ router.post('/add-rental', async (req, res) => {
         return res.status(400).json({ 'response': 'The request made is missing data needed in order to complete the rental.' });
     }
 
-    try {
-        // if the user is logged in, making the reqeust assuming they are valid then. 
-        // so long as there is an ID I do not care what it is. 
-        const userId = req.body.user_id;
-        const tools = req.body.tool_ids;
-        const startDate = req.body.start_date;
-        const endDate = req.body.end_date;
+    // if the user is logged in, making the reqeust assuming they are valid then. 
+    // so long as there is an ID I do not care what it is. 
+    const userId = req.body.user_id;
+    const toolIds = req.body.tool_ids;
+    const startDate = req.body.start_date;
+    const endDate = req.body.end_date;
 
+    // Check if the tools exist in the 'tools' table before creating 'ToolsCheckedOut' records
+    const validToolList = await Tools.findAll({
+        where: {
+            id: toolIds,
+        },
+    });
+
+    // Compare the tools passed in vs the resulting amount of ids returned
+    // if there is a difference, then there is a tool missing, meaning a tool is not valid
+    if (validToolList.length !== toolIds.length) {
+        return res.status(404).json({ 'response': 'One or more of the tools attempting to be added do not exist.' });
+    }
+
+    try {
         // Parse the list of tools to add each one as a record in the db
-        const toolsRented = await Promise.all(tools.map(toolId => ToolsCheckedOut.create({
+        const toolsRented = await Promise.all(toolIds.map(toolId => ToolsCheckedOut.create({
             user_id: userId.toString(),
             tool_id: toolId.toString(),
             checkout_date: startDate.toString(),
@@ -82,10 +95,11 @@ router.post('/add-rental', async (req, res) => {
         })));
 
         // Return 
-        return res.status(200).json({ 'response': 'The rental has been confirmed!' });
+        return res.status(200).json({ 'response': 'The rental has been confirmed!', 'tools': toolsRented });
 
     } catch (error) {
         // Return Error
+        console.log(error);
         return res.status(500).json({ 'response': 'There was an issue adding the rental.' });
     }
 });
