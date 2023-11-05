@@ -1,3 +1,9 @@
+/*
+  * Create the User Model Seed Data
+  * 
+  * 
+*/
+
 const bcrypt = require('bcrypt');
 const { Users } = require('../models');
 

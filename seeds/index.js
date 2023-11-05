@@ -1,3 +1,8 @@
+/*
+  * Entry point for the Seed Data
+  * 
+  * 
+*/
 const seedTools = require('./toolSeed');
 const seedUsers = require('./userSeed');
 
