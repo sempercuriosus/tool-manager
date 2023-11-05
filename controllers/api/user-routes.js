@@ -26,7 +26,7 @@ router.use('/ping', (req, res) => {
  *
 */
 router.post('/login', async (req, res) => {
-  
+
   // #region REQUEST BODY
   /*
     * request body
@@ -59,12 +59,12 @@ router.post('/login', async (req, res) => {
       return res.status(404).json({ 'result': 'The username or password was not correct.' });
     }
 
-    // Log the session in the DB.
+    // The user was found and can log the session in the DB.
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.logged_in = true;
 
-      return res.send('USER FOUND: ' + dbUserData.id + ' ' + dbUserData.first_name + ' ' + req.session.id);
+      return res.status(200).json({ 'response': 'User was logged in' });
     });
 
   } catch (err) {
