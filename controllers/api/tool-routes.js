@@ -78,7 +78,7 @@ router.post('/add-rental', async (req, res) => {
             user_id: userId.toString(),
             tool_id: toolId.toString(),
             checkout_date: startDate.toString(),
-            reutrn_date: endDate.toString()
+            return_date: endDate.toString()
         })));
 
         // Return 
