@@ -29,7 +29,7 @@ ToolsCheckedOut.init(
         , checkout_date: {
             type: DataTypes.DATE
         }
-        , reutrn_date: {
+        , return_date: {
             type: DataTypes.DATE
         }
     },
