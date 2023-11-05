@@ -9,18 +9,21 @@ const seedUsers = require('./userSeed');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
-    // sync the db models
-    await sequelize.sync({ force: true });
-    console.log('\n----- DATABASE SYNCED -----\n');
+  // sync the db models
+  await sequelize.sync({ force: true });
+  console.info('\n----- DATABASE SYNCED -----\n');
 
-    await seedTools();
-    console.log('\n----- TOOLS SEEDED -----\n');
+  // Seed Tools Table
+  await seedTools();
+  console.info('\n----- TOOLS SEEDED -----\n');
 
-    await seedUsers();
-    console.log('\n----- USERS SEEDED -----\n');
+  // Seed User Table
+  await seedUsers();
+  console.info('\n----- USERS SEEDED -----\n');
 
-
-    process.exit(0);
+  // Kill Process
+  process.exit(0);
 };
 
+// Call Seed
 seedAll();

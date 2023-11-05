@@ -1,28 +1,11 @@
-
-// #region USER ROUTES OUTLINE
 /*
-* Overview of the user related routes
-  *
-  * Login - [ POST ]
-  * Logout - [ POST ]
-  *   This can redirect back to Login html page
-  *
-  * Rental - [ POST ]
-  *
-  * Updates - [ PUT ]
-  *   First Name
-  *   Last Name
-  *   Address
-  *   Email
-  *   Password
-  *
+  * User Routes
+  * 
+  * Actions for the User 
+  * 
 */
 
-// #endregion USER ROUTES OUTLINE
-
-/*
-  * Imports
-*/
+// Imports
 const router = require('express').Router();
 const { Users } = require('../../models');
 
@@ -33,46 +16,50 @@ const { Users } = require('../../models');
 // const { Users } = require('/Users/keys/projects/bootcamp/project2/models/users.js');
 // const { Users } = require('../../models/users.js');
 
-
 router.use('/ping', (req, res) => {
   console.log('The user has user-pinged!');
   res.send('Therefore, I must user-pong...');
 });
 
-
-
-// #region Login
 /*
  * Logs the user into the app
  *
 */
 router.post('/login', async (req, res) => {
-  /** 
-    request body
-    {
-      "email": "",
-      "password":""
-    }
-  */
-  try {
-    console.log('EMAIL EMAIL EMAIL: ' + req.body.email);
+  
+  // #region REQUEST BODY
+  /*
+    * request body
+  
+      {
+        "email": "",
+        "password":""
+      }
+  
+    */
+  // #endregion REQUEST BODY
 
+  try {
+    // See if the user exists
     const dbUserData = await Users.findOne({
       where: {
         email: req.body.email
       },
     });
 
+    // Error if the user is not found
     if (!dbUserData) {
       return res.status(404).json({ 'result': 'The username or password was not correct.' });
     }
 
     const validatedPassword = await dbUserData.checkPassword(req.body.password);
 
+    // Error if the password is not right
     if (!validatedPassword) {
       return res.status(404).json({ 'result': 'The username or password was not correct.' });
     }
 
+    // Log the session in the DB.
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.logged_in = true;
@@ -81,23 +68,19 @@ router.post('/login', async (req, res) => {
     });
 
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ 'response': 'There was an issue looking up the user.' });
   }
 });
 
-// #endregion Login
 
-
-// #region Logout
 /*
- * Logs the user out and needs a redirect to login  html
+ * Logs the user out and needs a redirect to login html
  *
+ * Remove the token and end the session
 */
 router.post('/logout', (req, res) => {
   try {
     if (req.session.logged_in) {
-      console.log('Session', req.session.id, 'closing...');
       req.session.destroy(() => {
         res.status(204).end();
       });
@@ -109,11 +92,6 @@ router.post('/logout', (req, res) => {
     res.status(500).json({ 'response': 'There was an error in logging out.' });
   }
 });
-
-// });
-
-// #endregion Logout
-
 
 
 // export
