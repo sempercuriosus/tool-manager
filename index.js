@@ -1,3 +1,4 @@
+// express 
 const express = require('express');
 // controllers
 const routes = require('./controllers');
@@ -10,7 +11,7 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // View Engine
 const exphbs = require('express-handlebars');
-//Helpers
+// Helpers
 const helpers = require('./utils/helpers');
 
 // Express Instance
@@ -33,7 +34,7 @@ const sess = {
         maxAge: cookieMaxAge,
     },
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new SequelizeStore({
         db: sequelize
     })
