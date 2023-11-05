@@ -21,7 +21,7 @@ Like tools but do not always have the one you need for the current job? How a Li
 
 - The basic concept of the application is to facilitate rentals of the tools you need from a tool library.
 - What you can do
-  - Search for the tools available
+  - Select from the tools available
   - Add what you need
   - Pick a start and end date
   - And Confirm the rental!
@@ -146,6 +146,7 @@ Like tools but do not always have the one you need for the current job? How a Li
 ## Acknowledgments<a id="acknowledgments"></a>
 
 - @SemperCuriosus, used the starter code to work through problems and did not copy over any sections directly. Some sections of code, however, will look similar.
+-
 
 ---
 
@@ -161,7 +162,10 @@ Like tools but do not always have the one you need for the current job? How a Li
 
 ## Author Credit<a id="author-credit"></a>
 
-- Eric Hulse [semper curiosus](https://github.com/sempercuriosus)
+- Eric Hulse [Semper Curiosus](https://github.com/sempercuriosus)
+- Tyler Stubs [Zxncho](https://github.com/zxncho)
+- Oleksandr Buhaiov [MisterHouse](https://github.com/MisterHouse)
+- Modeste Valens [Movank1](https://github.com/Movank1)
 
 ---
 
