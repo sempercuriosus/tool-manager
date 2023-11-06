@@ -11,14 +11,44 @@ const router = express.Router();
 // Models
 const { Tools, ToolsCheckedOut } = require('../../models');
 
+
 /*
  * Get the tools in the database
  * 
 */
 router.get('/', async (req, res) => {
     try {
+        const userId = req.session.user_id;
+
+        // Get All of the tools from the DB
+        const userRentals = await ToolsCheckedOut.findAll({
+            where: { user_id: userId },
+            include: [
+                {
+                    model: Tools,
+                    attributes: [ 'tool_name' ],
+                },
+            ],
+        });
+
+        // returning tools
+        res.json(userRentals);
+
+    } catch (error) {
+        res.status(500).json({ 'Internal Server Error': 'There was an error in processing the current request.' });
+    }
+});
+
+/*
+ * Get the tools in the database
+ * 
+*/
+router.get('/available', async (req, res) => {
+    try {
         // Get All of the tools from the DB
         const allTools = await Tools.findAll({
+            // Planning on using this later on...
+            // where: { is_available: 1 },
             attributes: [ 'id', 'tool_name' ]
         });
 
@@ -55,8 +85,9 @@ router.post('/add-rental', async (req, res) => {
 
     // #endregion REQUEST BODY
 
+
     // check request body has required params
-    if (!req.body.user_id ||
+    if (!req.session.user_id ||
         !req.body.tool_ids ||
         !req.body.start_date ||
         !req.body.end_date) {
@@ -67,7 +98,7 @@ router.post('/add-rental', async (req, res) => {
 
     // if the user is logged in, making the reqeust assuming they are valid then. 
     // so long as there is an ID I do not care what it is. 
-    const userId = req.body.user_id;
+    const userId = req.session.user_id;
     const toolIds = req.body.tool_ids;
     const startDate = req.body.start_date;
     const endDate = req.body.end_date;
@@ -94,13 +125,23 @@ router.post('/add-rental', async (req, res) => {
             return_date: endDate.toString()
         })));
 
+
+
         // Return 
-        return res.status(200).json({ 'response': 'The rental has been confirmed!', 'tools': toolsRented });
+        return res.status(200).json({ 'response': 'The rental has been confirmed!'/*, 'tools': toolsRented*/ });
 
     } catch (error) {
         // Return Error
-        console.log(error);
-        return res.status(500).json({ 'response': 'There was an issue adding the rental.' });
+        // console.log(error);
+
+        if (error.name === 'SequelizeUniqueConstraintError') {
+            // Duplicate entry error
+
+            return res.status(400).json({ response: 'There cannot be a duplicate rental for the user and tool id' });
+        } else {
+            // Other errors
+            return res.status(500).json({ response: 'There was an issue adding the rental.' });
+        }
     }
 });
 
