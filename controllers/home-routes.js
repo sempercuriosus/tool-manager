@@ -22,13 +22,14 @@ const withAuth = require('../utils/auth');
   * 
 */
 router.get('/', withAuth, async (req, res) => {
-    // Render the profile partial 
-    try {
-        res.status(200).render('profile', { pageTitle: 'User Profile', userData: 'USER', layout: 'homepage' });
-    }
-    catch {
-        res.status(500).json({ 'result': 'There was an error in rendering the Profile.' });
-    }
+  // Render the profile partial 
+  try {
+    // console.log('DO ---------> render profile');
+    res.status(200).render('homepage', { pageTitle: 'User Profile', userData: 'USER', layout: 'toolDirectory' });
+  }
+  catch {
+    res.status(500).json({ 'result': 'There was an error in rendering the Profile.' });
+  }
 });
 
 /*
@@ -36,15 +37,22 @@ router.get('/', withAuth, async (req, res) => {
   *
 */
 router.get('/login', (req, res) => {
-    // If a session exists, the user IS logged in and the request can be redirected to the to the homepage
+  // If a session exists, the user IS logged in and the request can be redirected to the to the homepage
 
-    // DO redirect to the root route to the homepage
-    if (req.session.logged_in) {
-        return res.status(204).redirect('/');
-    }
+  // DO redirect to the root route to the homepage
+  if (req.session.logged_in) {
+    // console.log('DO ---------> user is logged in, REDIRECT to main');
+    return res.status(204).redirect('/');
+  }
 
-    // If this is executed then the user IS NOT logged in and needs to be sent to the login page.
-    res.render('profile', { pageTitle: 'User Profile', userData: 'USER', layout: 'homepage' });
+  // If this is executed then the user IS NOT logged in and needs to be sent to the login page.
+  // console.log('DO ---------> render login page');
+  try {
+    res.render('homepage', { pageTitle: 'Login', userData: 'USER', layout: 'login' });
+  }
+  catch {
+    console.error('Could not Render the login page');
+  }
 });
 
 // Export
