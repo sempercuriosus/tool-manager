@@ -96,6 +96,11 @@ router.post('/logout', (req, res) => {
 });
 
 
+/*
+  * Checkout what the user has out now
+  * 
+  * 
+*/
 router.get('/checkedout', async (req, res) => {
 
   try {
