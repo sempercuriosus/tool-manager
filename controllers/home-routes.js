@@ -64,7 +64,7 @@ router.get('/login', (req, res) => {
 
 
 /*
-  * Logout
+  * Get the Checkedout items
   * 
   * 
 */
