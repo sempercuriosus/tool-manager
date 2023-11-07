@@ -2,7 +2,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <title>Tool EZ - {{pageTitle}}</title>
   </head>
   <body>
@@ -12,7 +15,10 @@
     <nav>
       <a class="subtitle is-2" href="/">Home</a>
       <a class="subtitle is-2" href="/available">Rent Tools</a>
-      <button class="button is-danger is-large is-rounded is-hovered"><a href="/" id="logout">Logout</a></button>
+      <button class="button is-danger is-large is-rounded is-hovered"><a
+          href="/login"
+          id="logout"
+        >Logout</a></button>
     </nav>
     <div class="user-rentals">
 
@@ -21,8 +27,10 @@
         {{#each rentals}}
           <li>
             <p><strong>Tool Name:</strong> {{this.tool_name}}</p>
-            <p><strong>Checkout Date:</strong> {{this.checkout_date}}</p>
-            <p><strong>Return Date:</strong> {{this.return_date}}</p>
+            <p><strong>Checkout Date:</strong>
+              {{formatDate this.checkout_date}}</p>
+            <p><strong>Return Date:</strong>
+              {{formatDate this.return_date}}</p>
           </li>
         {{/each}}
       </ul>

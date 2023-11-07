@@ -3,7 +3,7 @@ const Tools = require('./tools');
 const Users = require('./users');
 const ToolsCheckedOut = require('./tools_checked_out');
 
-console.log('Sync DB Models');
+console.info('Sync DB Models');
 
 // Model Relationships
 Users.hasMany(ToolsCheckedOut, {

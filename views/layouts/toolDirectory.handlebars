@@ -2,7 +2,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <title>Tool EZ - {{pageTitle}}</title>
   </head>
   <body>
@@ -10,28 +13,49 @@
       <h1 class="title is-1">Available Tools</h1>
     </header>
 
-    <img class="is-rounded is-centered" src="/images/Tools_img.jpeg" alt="Image of some tools" />
+    <img
+      class="is-rounded is-centered"
+      src="/images/Tools_img.jpeg"
+      alt="Image of some tools"
+    />
 
     <nav class="toolpage_navigators">
       <a class="button is-link is-rounded is-large" href="/">Home</a>
-      <button class="button is-danger is-large is-rounded is-hovered"><a href="/" id="logout">Logout</a></button>
+      <button class="button is-danger is-large is-rounded is-hovered"><a
+          href="/"
+          id="logout"
+        >Logout</a></button>
     </nav>
 
-    <button class="button is-medium is-rounded is-link" id="button-tools">Refresh Tools</button>
-    <button class="button is-medium is-rounded is-link" id="rent-button">Rent</button>
+    <button
+      class="button is-medium is-rounded is-link"
+      id="button-tools"
+    >Refresh Tools</button>
+    <button
+      class="button is-medium is-rounded is-link"
+      id="rent-button"
+    >Rent</button>
 
     <aside>
       <img src="" alt="Get this tool!" />
     </aside>
 
+    <section>
+      <label for="startDatePicker">Set Rental Start Date:</label>
+      <input type="date" id="startDate" name="startDatePicker" />
+      <label for="endDatePicker">Set Rental End Date:</label>
+      <input type="date" id="endDate" name="endDatePicker" />
+    </section>
+
     <section class="columns">
+
       <h2 class="title is-2">Available Tools</h2>
-      <ul id="tools-list column">
+      <ul id="tools-list">
         <!-- Available tools will be displayed here -->
       </ul>
 
       <h2>Added Tools</h2>
-      <ul id="selected-tools column">
+      <ul id="selected-tools">
         <!-- Selected tools will be displayed here -->
       </ul>
     </section>

@@ -17,7 +17,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // View Engine
 const exphbs = require('express-handlebars');
 // Helpers
-const helpers = require('./utils/helpers');
+const customHelpers = require('./utils/helpers');
 // Path
 const path = require('path');
 
@@ -27,6 +27,9 @@ const PORT = process.env.PORT || 3001;
 
 // Handelbars
 const hbs = exphbs.create();
+
+// Set Helpers
+hbs.handlebars.registerHelper(customHelpers);
 
 // Cookie Timeout @2 hours
 // 1000ms (required by session) * 12 hours * 60 minutes * 60 seconds
@@ -55,6 +58,8 @@ app.use(session(sess));
 // Setting the view engine
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+
 
 // Middleware
 app.use(express.json());

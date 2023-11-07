@@ -1,5 +1,4 @@
 
-
 /*
   * Create a Rental
   * 
@@ -14,6 +13,10 @@ const createRental = async (event) => {
     // Convert HTMLCollection to an array.
     const toolList = Array.from(selectedToolsContainer.querySelectorAll('li'));
     const toolCount = toolList.length;
+
+    // Get the Rental Dates And Check Date Input
+    const startDate = document.querySelector('#startDate').value || "";
+    const endDate = document.querySelector('#endDate').value || "";
 
     // If there are NOT tools, then alert the user they need one or more.
     if (toolCount == 0) {
@@ -32,8 +35,6 @@ const createRental = async (event) => {
         }
     });
 
-    console.log(rentedToolsIds);
-
     // Set the route to use
     const rentedToolResponse = await fetch('/api/tools/add-rental', {
         method: 'POST',
@@ -41,8 +42,8 @@ const createRental = async (event) => {
         // note, the user id is missing here, I used a session, so the user information is retrieved from the server-side
         body: JSON.stringify({
             tool_ids: rentedToolsIds
-            , start_date: "2023-11-06"
-            , end_date: "2024-01-01"
+            , start_date: startDate
+            , end_date: endDate
         }),
         headers: { 'Content-Type': 'application/json' },
     });
@@ -57,7 +58,7 @@ const createRental = async (event) => {
         // clear the rentals
         selectedToolsContainer.innerHTML = "";
         // let the user know
-        alert('There was a duplicate rental.');
+        alert('There was an issue with completing the rental');
     }
     else { }
 };
