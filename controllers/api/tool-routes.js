@@ -103,7 +103,6 @@ router.post('/add-rental', async (req, res) => {
 
     } catch (error) {
         // Return Error
-        // console.log(error);
 
         if (error.name === 'SequelizeUniqueConstraintError') {
             // Duplicate entry error
