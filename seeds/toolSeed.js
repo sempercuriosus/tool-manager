@@ -31,7 +31,7 @@ const toolList = [ {
     "is_available": false
 }
     , {
-    "tool_name": "Screwdriver, #2 Flathead",
+    "tool_name": "Screwdriver, #1 Flathead",
     "date_added": "7/18/2012",
     "is_available": false
 }
@@ -41,7 +41,7 @@ const toolList = [ {
     "is_available": false
 }
     , {
-    "tool_name": "Screwdriver, #2 Flathead",
+    "tool_name": "Screwdriver, #3 Flathead",
     "date_added": "7/18/2012",
     "is_available": false
 }
