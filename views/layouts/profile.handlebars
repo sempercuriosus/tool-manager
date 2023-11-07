@@ -9,13 +9,13 @@
     <title>Tool EZ - {{pageTitle}}</title>
   </head>
   <body>
-    <header>
+    <header class="is-centered">
       <h1> Tool EZ Profile </h1>
     </header>
     <nav>
-      <a class="subtitle is-2" href="/">Home</a>
-      <a class="subtitle is-2" href="/available">Rent Tools</a>
-      <button class="button is-danger is-large is-rounded is-hovered"><a
+      <a class="subtitle is-3" style="padding-left: 15px;" href="/">Home</a>
+      <a class="subtitle is-3" style="padding-left: 15px;" href="/available">Rent Tools</a>
+      <button class="button is-danger is-large is-rounded is-hovered" style="padding-left: 20px;"><a
           href="/login"
           id="logout"
         >Logout</a></button>
@@ -23,9 +23,9 @@
     <div class="user-rentals">
 
       <h2>Current Rentals</h2>
-      <ul>
+      <ul class="tile is-parent">
         {{#each rentals}}
-          <li>
+          <li class="tile is-child notification is-info" style="padding: 10px;">
             <p><strong>Tool Name:</strong> {{this.tool_name}}</p>
             <p><strong>Checkout Date:</strong>
               {{formatDate this.checkout_date}}</p>
