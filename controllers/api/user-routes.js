@@ -107,7 +107,6 @@ router.get('/checkedout', async (req, res) => {
 
     const userId = req.session.user_id;
 
-    console.log('get user rentals');
     // Get All of the tools from the DB
 
     const userRentals = await sequelize.query(
@@ -124,11 +123,9 @@ router.get('/checkedout', async (req, res) => {
     );
 
     // returning tools
-    console.log(userRentals);
     res.status(200).render('homepage', { pageTitle: 'User Profile', userId: userId, rentals: userRentals, layout: 'profile' });
 
   } catch (error) {
-    console.log(error);
     res.status(500).json({ 'Internal Server Error': 'There was an error in processing the current request.' });
   }
 });
