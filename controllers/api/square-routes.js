@@ -10,23 +10,23 @@ router.post('/pay', async (req, res) => {
 
     const url = 'https://connect.squareup.com/v2/payments'
     const data = {
-      "idempotency_key": "afba-ba953ba59b4a" + Date.now(),
+      "idempotency_key": "b040-cde262dbfded" + Date.now(),
 
 
-    "amount_money": {
-      "amount": 500,
-      "currency": "USD"
-    },
-    "external_details": {
-      "type": "OTHER"
-      "source": "Manager tool"
-    },
-    "source_id": "EXTERNAL",
-    "buyer_email_address": "mhhh@managertool.com",
-    "location_id": "LFQSAZ206SE58",
-    "shipping_address": {
-      "address_line_1": "1234 Manager tool charlotte, NC"
-    }
+      "amount_money": {
+        "amount": 500,
+        "currency": "USD"
+      },
+      "external_details": {
+        "type": "OTHER",
+        "source": "Manager tool"
+      },
+      "source_id": "EXTERNAL",
+      "buyer_email_address": "mhhh@managertool.com",
+      "location_id": "LFQSAZ206SE58",
+      "shipping_address": {
+        "address_line_1": "1234 Manager tool charlotte, NC"
+      }
    
    
      };
@@ -45,23 +45,9 @@ router.post('/pay', async (req, res) => {
        console.log(body);
     });
 
-
-
-
-
-
-
-    
-    res.send ('received');
-
-
-
-
-
-
-
-
-  
   });
 
   module.exports = router;
+
+
+ 
