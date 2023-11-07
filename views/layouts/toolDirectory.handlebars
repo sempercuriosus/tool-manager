@@ -1,29 +1,42 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tool EZ - {{pageTitle}}</title>
+  </head>
+  <body>
     <header>
-        <h1>Available Tools</h1>
+      <h1>Available Tools</h1>
     </header>
 
-*Need to figure out how to add image here*
-    <div class="tools_display">
+    <img src="/images/Tools_img.jpeg" alt="Image of some tools" />
+
+    <nav class="toolpage_navigators">
+      <a href="/">Home</a>
+      <a href="" id="logout">Logout</a>
+    </nav>
+
+    <button id="button-tools">Refresh Tools</button>
+    <button id="rent-button">Rent</button>
+
     <aside>
-        <img src="" alt="Get this tool!">
+      <img src="" alt="Get this tool!" />
     </aside>
 
-    <p>
-        {{tool_name}} <br>
-        {{is-available}} 
-    </p>
-    </div>
-    <nav class="toolpage_navigators">
-        <button>Previous</button>
-        <button>Next</button>
-    </nav>
-</body>
+    <section>
+      <h2>Available Tools</h2>
+      <ul id="tools-list">
+        <!-- Available tools will be displayed here -->
+      </ul>
+
+      <h2>Added Tools</h2>
+      <ul id="selected-tools">
+        <!-- Selected tools will be displayed here -->
+      </ul>
+    </section>
+
+    <script src="/js/tools.js"></script>
+    <script src="/js/rent.js"></script>
+    <script src="/js/logout.js"></script>
+  </body>
 </html>

@@ -12,17 +12,17 @@ ToolsCheckedOut.init(
             , autoIncrement: true
             , primaryKey: true
         }
-        , tool_id: {
-            type: DataTypes.INTEGER
-            , references: {
-                model: 'tools'
-                , key: 'id'
-            }
-        }
         , user_id: {
             type: DataTypes.INTEGER
             , references: {
                 model: 'users'
+                , key: 'id'
+            }
+        }
+        , tool_id: {
+            type: DataTypes.INTEGER
+            , references: {
+                model: 'tools'
                 , key: 'id'
             }
         }

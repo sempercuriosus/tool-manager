@@ -27,5 +27,12 @@ Tools.belongsToMany(Users, {
     foreignKey: 'tool_id',
 });
 
+ToolsCheckedOut.belongsTo(Tools, {
+    foreignKey: 'tool_id'
+});
+
+ToolsCheckedOut.belongsTo(Users, {
+    foreignKey: 'user_id'
+});
 
 module.exports = { Tools, Users, ToolsCheckedOut };

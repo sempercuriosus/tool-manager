@@ -1,27 +1,29 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tool EZ</title>
-</head>
-<body>
-   <div class="welcome-hero">
-    <p>Welcome to Tool EZ, where we have what you need!</p>
-   </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tool EZ - {{pageTitle}}</title>
+  </head>
+  <body>
+    <div class="welcome-hero">
+      <p>Welcome to Tool EZ, where we have what you need!</p>
+    </div>
 
-   <div class="login-message">
-    <p>Please login to get started</p>
-   </div>
+    <div class="login-message">
+      <p>Please login to get started</p>
+    </div>
 
-   <div class="login-node">
-    <label for="email">Email</label>
-    <input type="text" id="email" name="Email">
-    
-    <label for="password">Password</label>
-    <input type="text" id="password" name="password">
+    <div class="login-node">
+      <label for="email">Email</label>
+      <input type="text" id="email" name="Email" />
 
-    <button class="login-button">Login</button>
-    <button class="forgot">Need help logging in?</button>
-   </div>
+      <label for="password">Password</label>
+      <input type="text" id="password" name="password" />
+
+      <button class="login-button" id="login-button">Login</button>
+      {{! <button class="forgot">Need help logging in?</button> }}
+    </div>
+
+    <script src="/js/login.js"></script>
+  </body>
 </html>
