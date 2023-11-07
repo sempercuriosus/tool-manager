@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const request = require('request');
 
+require('dotenv').config();
+
 // POST /api/square/pay -> {"amount": 1.25, "email": "daziee@aol.com"}
 router.post('/pay', async (req, res) => {
 
@@ -32,7 +34,7 @@ router.post('/pay', async (req, res) => {
      };
     const customHeaders = {
        "Square-Version": "2023-10-18",
-        "Authorization": "Bearer EAAAEZz1co6Wm6iwTw_lFBPnGsNoL6BT4a7r9eycjk9UpAI9760DEykVD58Eyz7G",
+        "Authorization": "Bearer " + process.env.SQUARE_KEY,
        "Content-Type": "application/json"
      }
      request({
