@@ -12,13 +12,10 @@
 
 // Router Instance
 const router = require('express').Router();
-
 // Auth
 const withAuth = require('../utils/auth');
-
 // Models
 const { User } = require('../models');
-
 // Sequelize
 const sequelize = require('../config/connection');
 
@@ -68,7 +65,7 @@ router.get('/login', (req, res) => {
   * 
   * 
 */
-router.get('/checkedout', async (req, res) => {
+router.get('/checkedout', withAuth, async (req, res) => {
   // Get the available tools 
 
   const userId = req.session.user_id;
@@ -91,7 +88,7 @@ router.get('/checkedout', async (req, res) => {
   }
 });
 
-router.get('/available', (req, res) => {
+router.get('/available', withAuth, (req, res) => {
   // Get the available tools 
   if (req.session.logged_in) {
     res.render('homepage', { pageTitle: 'Tools', userData: 'USER', layout: 'toolDirectory' });
