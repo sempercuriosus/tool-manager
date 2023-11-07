@@ -16,33 +16,6 @@ const { Tools, ToolsCheckedOut } = require('../../models');
  * Get the tools in the database
  * 
 */
-router.get('/', async (req, res) => {
-    try {
-        const userId = req.session.user_id;
-
-        // Get All of the tools from the DB
-        const userRentals = await ToolsCheckedOut.findAll({
-            where: { user_id: userId },
-            include: [
-                {
-                    model: Tools,
-                    attributes: [ 'tool_name' ],
-                },
-            ],
-        });
-
-        // returning tools
-        res.json(userRentals);
-
-    } catch (error) {
-        res.status(500).json({ 'Internal Server Error': 'There was an error in processing the current request.' });
-    }
-});
-
-/*
- * Get the tools in the database
- * 
-*/
 router.get('/available', async (req, res) => {
     try {
         // Get All of the tools from the DB
@@ -124,8 +97,6 @@ router.post('/add-rental', async (req, res) => {
             checkout_date: startDate.toString(),
             return_date: endDate.toString()
         })));
-
-
 
         // Return 
         return res.status(200).json({ 'response': 'The rental has been confirmed!'/*, 'tools': toolsRented*/ });
