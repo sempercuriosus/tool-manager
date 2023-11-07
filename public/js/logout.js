@@ -1,10 +1,11 @@
-
 /*
   * Logout the user
   * 
   * 
 */
 const logoutUser = async () => {
+    alert('You have been logged out.');
+
     // Access the route to logout when needed (or session expires)
     const response = await fetch('/api/users/logout', {
         method: 'POST',
@@ -20,5 +21,5 @@ const logoutUser = async () => {
     }
 };
 
-const logoutbutton = document.querySelector('#logout');
-logoutUser.addEventListener('click', logoutUser);
+const logoutLink = document.querySelector('#logout');
+logoutLink.addEventListener('click', logoutUser);
