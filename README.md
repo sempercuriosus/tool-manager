@@ -75,8 +75,6 @@ Like tools but do not always have the one you need for the current job? How a Li
   - Type: `N/A`
   - Text: `N/A`
 
----
-
 ### MAIN ROUTE
 
 - URL: `http://localhost:3001/`
@@ -84,8 +82,6 @@ Like tools but do not always have the one you need for the current job? How a Li
 - Body
   - Type: `N/A`
   - Text: `N/A`
-
----
 
 ### USER PING-PONG
 
@@ -95,7 +91,13 @@ Like tools but do not always have the one you need for the current job? How a Li
   - Type: `N/A`
   - Text: `N/A`
 
----
+### GET USERS RENTALS
+
+- URL: `http://localhost:3001/api/users/checkedout`
+- HTTP Method: `GET`
+- Body
+  - Type: `N/A`
+  - Text: `N/A`
 
 ### LOGIN
 
@@ -103,9 +105,7 @@ Like tools but do not always have the one you need for the current job? How a Li
 - HTTP Method: `POST`
 - Body
   - Type: `application/json`
-  - Text: `{"email":"hulse@hey.com","password":"password12345"}`
-
----
+  - Text: `{"email":"email@host.com","password":"password12345"}`
 
 ### LOGOUT
 
@@ -113,19 +113,23 @@ Like tools but do not always have the one you need for the current job? How a Li
 - HTTP Method: `POST`
 - Body
   - Type: `application/json`
-  - Text: `{"email":"hulse@hey.com"`
-
----
+  - Text: `{"email":"email@host.com"}`
 
 ### GET TOOL LIST
 
-- URL: `http://localhost:3001/api/tools/`
+- URL: `http://localhost:3001/api/tools/available`
 - HTTP Method: `GET`
 - Body
   - Type: `N/A`
   - Text: `N/A`
 
----
+### ADD RENTAL
+
+- URL: `http://localhost:3001/api/tools/add-rental`
+- HTTP Method: `POST`
+- Body
+  - Type: `application/json`
+  - Text: `{"tool_ids":[1,2,3],"start_date":"2023-11-02","end_date":"2023-12-01"}`
 
 ### ADD RENTAL
 
@@ -146,9 +150,7 @@ Like tools but do not always have the one you need for the current job? How a Li
 ## Acknowledgments<a id="acknowledgments"></a>
 
 - @SemperCuriosus, used the starter code to work through problems and did not copy over any sections directly. Some sections of code, however, will look similar.
--
-
----
+- ***
 
 ## Resources Used
 
@@ -170,3 +172,4 @@ Like tools but do not always have the one you need for the current job? How a Li
 ---
 
 ===
+
