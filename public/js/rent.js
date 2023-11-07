@@ -24,6 +24,11 @@ const createRental = async (event) => {
         return;
     }
 
+    if (!startDate || !endDate) {
+        alert('Select a Start Date and End Date for your rental, please.');
+        return;
+    }
+
     // Set empty array for the tools (also will reset on button click)
     let rentedToolsIds = [];
 
