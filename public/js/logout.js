@@ -4,7 +4,8 @@
   * 
 */
 const logoutUser = async () => {
-    alert('You have been logged out.');
+    // Need to replace with a modal  
+    // alert('You have been logged out.');
 
     // Access the route to logout when needed (or session expires)
     const response = await fetch('/api/users/logout', {
