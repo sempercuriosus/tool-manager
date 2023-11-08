@@ -27,7 +27,7 @@ const loginUser = async (event) => {
             document.location.replace('/');
         } else {
             // User NOT logged in, alert them
-            alert('Failed to log in. The username or password was not correct.');
+            alert('The username or password was not correct.');
         }
     }
 };

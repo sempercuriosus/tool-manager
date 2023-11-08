@@ -80,7 +80,7 @@ router.post('/login', async (req, res) => {
  *
  * Remove the token and end the session
 */
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   try {
     if (req.session.logged_in) {
       req.session.destroy(() => {
