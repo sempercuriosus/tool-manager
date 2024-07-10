@@ -1,6 +1,6 @@
 # Tool Rental
 
-Like tools but do not always have the one you need for the current job? How a Library works? Then this application is for you!
+Like tools but do not always have the one you need for the current job? Like how a libraries work? Then this application is for you!
 
 ## Table of Contents
 
